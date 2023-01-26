@@ -77,26 +77,28 @@
 				default:
 					window.alert('the heck u doin :/');
 			} 
-
-			for (i = 0; i < document.getElementById('track1').files.length; i++) {
-				const reader = new FileReader();
-				reader.onload=function(){
-					str = str + reader.result;
-					str = str.slice(0, str.length - 4);
+			for (j = 1; j < 5; j++) {
+				trackvar = 'track' + j;
+				for (i = 0; i < document.getElementById(trackvar).files.length; i++) {
+					const reader = new FileReader();
+					reader.onload=function(){
+						str = str + reader.result;
+						str = str.slice(0, str.length - 4);
+						console.log(str);
+					}
+					reader.readAsText(document.getElementById(trackvar).files[i]);
 					console.log(str);
+				}	
+				
+				if (document.getElementById('filler').value === 'fast') {
+					for (i = 0; i < (20 - document.getElementById(trackvar).files.length); i++) {
+						console.log("ghost " + i);
+					}
 				}
-				reader.readAsText(document.getElementById('track1').files[i]);
-				console.log(str);
-			}	
-			
-			if (document.getElementById('filler').value === 'fast') {
-				for (i = 0; i < (20 - document.getElementById('track1').files.length); i++) {
-					console.log("ghost " + i);
-				}
-			}
-			else {
-				for (i = 19; i > document.getElementById('track1').files.length; i--) {
-					console.log("ghost " + i);
+				else {
+					for (i = 19; i > document.getElementById(trackvar).files.length; i--) {
+						console.log("ghost " + i);
+					}
 				}
 			}
 		}
