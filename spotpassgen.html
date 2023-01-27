@@ -47,14 +47,15 @@
 		let str = null
 		
 		function calc() {
-			console.log('button pressed');
-			console.log(document.getElementById('cup').value);
+			console.log('cup ' + document.getElementById('cup').value);
 			switch(document.getElementById('cup').value) {
 				case '0':
 					str = '18 00 00 00 00 00 00 00 00 00 00 00 03 AB 0C 14 00 1F 8E 8C 00 00 00 00 00 04 00 00 00 03 07 00 00 00 00 00 00 01 00 04 00 0C AF B0 00 00 00 01 00 00 07 AF 04 00 00 00 1E 33 01 00 7C C7 01 00 03 00 00 00 DA 87 01 00 D7 51 02 00 02 00 00 00 D8 6D 01 00 78 32 02 00 05 00 00 00 0B E1 01 00 72 CB 02 00';
+					filename = '!!!!#!!!;t!!+s+@'
 					break;
 				case '1':
 					str = '18 00 00 00 00 00 00 00 00 00 00 00 03 B6 06 0C 00 1F 8E 8D 00 00 00 00 00 04 00 00 00 03 07 00 00 00 00 00 00 01 00 04 00 0C AF B0 00 00 00 02 00 00 07 AF 08 00 00 00 AB 45 01 00 51 EC 01 00 00 00 00 00 30 CE 01 00 82 9F 02 00 0F 00 00 00 68 AB 01 00 AC A3 02 00 01 00 00 00 C6 D9 01 00 AD E2 02 00';
+					filename = '!!!!$!!!;t!!+s+@'
 					break;
 				case '2':
 					// code block
@@ -81,26 +82,44 @@
 				trackvar = 'track' + j;
 				for (i = 0; i < document.getElementById(trackvar).files.length; i++) {
 					const reader = new FileReader();
+					reader.readAsText(document.getElementById(trackvar).files[i]);
 					reader.onload=function(){
 						str = str + reader.result;
-						str = str.slice(0, str.length - 4);
 						console.log(str);
+						str = str.slice(0, str.length - 4);
 					}
-					reader.readAsText(document.getElementById(trackvar).files[i]);
 					console.log(str);
 				}	
 				
 				if (document.getElementById('filler').value === 'fast') {
 					for (i = 0; i < (20 - document.getElementById(trackvar).files.length); i++) {
-						console.log("ghost " + i);
+					xmlhttp = new XMLHttpRequest();
+						xmlhttp.open("GET", 'ghosts/' + document.getElementById('cup').value + '/' + j + '/' + i + '.dat', false);
+						xmlhttp.send();
+						if (xmlhttp.status==200) {
+							result = xmlhttp.responseText;
+						}
+						console.log(result);
 					}
 				}
 				else {
 					for (i = 19; i > document.getElementById(trackvar).files.length; i--) {
-						console.log("ghost " + i);
+						
 					}
 				}
 			}
+
+			function delay(time) {
+			  return new Promise(resolve => setTimeout(resolve, time));
+			}
+
+			delay(500).then(() => console.log('LAST' + str));
+			
+			//var blob = new Blob([str], {
+			// type: "text/plain;charset=utf-8"
+			//});
+
+			//saveAs(blob, filename);
 		}
 	</script>	
 </html>
