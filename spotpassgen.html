@@ -93,19 +93,24 @@
 				
 				if (document.getElementById('filler').value === 'fast') {
 					for (i = 0; i < (20 - document.getElementById(trackvar).files.length); i++) {
-					xmlhttp = new XMLHttpRequest();
+						xmlhttp = new XMLHttpRequest();
 						xmlhttp.open("GET", 'ghosts/' + document.getElementById('cup').value + '/' + j + '/' + i + '.dat', false);
 						xmlhttp.send();
 						if (xmlhttp.status==200) {
 							result = xmlhttp.responseText;
 						}
 						str = str + result;
-						console.log(result);
 					}
 				}
 				else {
 					for (i = 19; i > document.getElementById(trackvar).files.length; i--) {
-						
+						xmlhttp = new XMLHttpRequest();
+						xmlhttp.open("GET", 'ghosts/' + document.getElementById('cup').value + '/' + j + '/' + i + '.dat', false);
+						xmlhttp.send();
+						if (xmlhttp.status==200) {
+							result = xmlhttp.responseText;
+						}
+						str = str + result;
 					}
 				}
 			}
