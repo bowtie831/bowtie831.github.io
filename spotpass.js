@@ -1,5 +1,5 @@
 function generate() {
-  const file1Url = '!!!!#!!!;t!!+s+@'; // The URL of file1.sav on the server
+  const file1Url = 'mushroom'; // The URL of file1.sav on the server
   const file2Input = document.getElementById('track1'); // The file input element for file2
 
   // Load file1.sav from the server
