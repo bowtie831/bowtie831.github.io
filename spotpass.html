@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+		<title>MK7 Spotpass Generator</title>
+		<meta name="description" content="Generates a spotpass file for Mario Kart 7 from inputted files">
+		<meta name="keywords" content="Mario Kart 7 MK7 Ghost Spotpass">
+	</head>
+		
+	<script src="spotpass.js"></script>
+
+	<body>
+		<h1>Mario Kart 7 Spotpass Generator</h1>
+		
+		<form>
+			<label for="cup">Select a cup:</label>
+			<select name="cup" id="cup">
+			  <option value=0 selected>Mushroom Cup</option>
+			  <option value=1>Flower Cup</option>
+			  <option value=2>Star Cup</option>
+			  <option value=3>Special Cup</option>
+			  <option value=4>Shell Cup</option>
+			  <option value=5>Banana Cup</option>
+			  <option value=6>Leaf Cup</option>
+			  <option value=7>Lightning Cup</option>
+			</select> 
+			
+			<label for="filler">Fill unused ghost slots with:</label>
+			<select name="filler" id="filler">
+			  <option value="fast">Fastest Ghosts</option>
+			  <option value="slow">Slowest Ghosts</option>
+			</select> 
+			
+			<br><h3>Submit up to 20 ghosts per track:</h3>
+			
+			<label for="track1">Track 1:</label>
+			<input type="file" id="track1" name="track1" accept=".dat" multiple><br>
+			<label for="track1">Track 2:</label>
+			<input type="file" id="track2" name="track2" accept=".dat" multiple><br>
+			<label for="track1">Track 3:</label>
+			<input type="file" id="track3" name="track3" accept=".dat" multiple><br>
+			<label for="track1">Track 4:</label>
+			<input type="file" id="track4" name="track4" accept=".dat" multiple><br><br>
+			
+			<input type="button" id="submit" value="Submit" onclick="generate()">
+		</form>	
+	</body>
+</html>
