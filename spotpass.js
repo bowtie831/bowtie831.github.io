@@ -27,7 +27,7 @@ function generate() {
         file1Array.set(file2Array, 0x1000);
 
         // Generate a new file with the modified data
-        const modifiedFile = new Blob([file1Array], { type: 'application/octet-stream' });
+        const modifiedFile = new Blob([file1Array], { type: 'application/octet-stream', encoding: "raw"});
 
         // Download the modified file as result.sav
         const downloadLink = document.createElement('a');
